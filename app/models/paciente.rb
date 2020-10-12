@@ -3,4 +3,5 @@ class Paciente < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :nome, presence: true
 end

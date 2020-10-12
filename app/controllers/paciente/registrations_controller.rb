@@ -2,12 +2,17 @@
 
 class Paciente::RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_nutri!
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
-    super
+    if (!(nutri_signed_in?))
+      redirect_to new_nutri_session_path,
+                  :notice => "Você precisa estar logado como Nutricionista!"
+    else
+      super
+    end
   end
 
   # POST /resource
@@ -17,7 +22,12 @@ class Paciente::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    super
+    if (!(nutri_signed_in?))
+      redirect_to new_nutri_session_path,
+                  :notice => "Você precisa estar logado como Nutricionista!"
+    else
+      super
+    end
   end
 
   # PUT /resource
@@ -42,9 +52,10 @@ class Paciente::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nome, :cpf, :data_nascimento, :altura])
+    #devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:nome, :data_nascimento, :cpf, :altura)}
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

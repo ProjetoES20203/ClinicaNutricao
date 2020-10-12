@@ -1,17 +1,12 @@
 # frozen_string_literal: true
 
-class Paciente::RegistrationsController < Devise::RegistrationsController
+class Nutri::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
+  #GET /resource/sign_up
   def new
-    if (!(nutri_signed_in?))
-      redirect_to new_nutri_session_path,
-                  :notice => "Você precisa estar logado como Nutricionista!"
-    else
-      super
-    end
+    super
   end
 
   # POST /resource
@@ -21,12 +16,7 @@ class Paciente::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    if (!(nutri_signed_in?))
-      redirect_to new_nutri_session_path,
-                  :notice => "Você precisa estar logado como Nutricionista!"
-    else
-      super
-    end
+    super
   end
 
   # PUT /resource
@@ -52,7 +42,7 @@ class Paciente::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nome, :cpf, :data_nascimento, :altura])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nome, :crn])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -61,12 +51,12 @@ class Paciente::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    return root_path
-  end
+  # def after_sign_up_path_for(resource)
+  #   super(resource)
+  # end
 
   # The path used after sign up for inactive accounts.
-  #def after_inactive_sign_up_path_for(resource)
-  # super(resource)
-  #end
+  # def after_inactive_sign_up_path_for(resource)
+  #   super(resource)
+  # end
 end

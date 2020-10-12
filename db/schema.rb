@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_12_134444) do
+ActiveRecord::Schema.define(version: 2020_10_12_194759) do
 
   create_table "nutris", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 2020_10_12_134444) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nome"
+    t.integer "cpf"
+    t.float "altura"
+    t.datetime "data_nascimento"
     t.index ["email"], name: "index_pacientes_on_email", unique: true
     t.index ["reset_password_token"], name: "index_pacientes_on_reset_password_token", unique: true
   end

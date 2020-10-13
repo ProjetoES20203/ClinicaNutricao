@@ -38,7 +38,7 @@ class DeviseCreateNutris < ActiveRecord::Migration[6.0]
 
     add_index :nutris, :email,                unique: true
     add_index :nutris, :reset_password_token, unique: true
-    # add_index :nutris, :confirmation_token,   unique: true
-    # add_index :nutris, :unlock_token,         unique: true
+    # add_index :nutri, :confirmation_token,   unique: true
+    # add_index :nutri, :unlock_token,         unique: true
   end
 end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Prontuario:</strong>
+  <%= @consult.prontuario %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @consult.data %>
+</p>
+
+<p>
+  <strong>Paciente:</strong>
+  <%= @consult.paciente_id %>
+</p>
+
+<%= link_to 'Edit', edit_paciente_consult_path([@paciente, @consult]) %> |
+<%= link_to 'Back', paciente_consults_path(@paciente) %>

@@ -45,7 +45,7 @@ group :test do
   gem 'cucumber', '4.1.0'
   gem 'cucumber-rails', require:false
   gem 'rspec'
-  gem 'rspec-rails', ">= 3.9.0"
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'database_cleaner'

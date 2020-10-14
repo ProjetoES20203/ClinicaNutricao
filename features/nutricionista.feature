@@ -20,3 +20,4 @@ Feature:Nutricionista
     And Eu estou na pagina de login do nutricionista
     And Eu faço login com o email 'edgar@gmail.com',  password '123456'
     Then Eu vejo a mensagem 'Signed in successfully.'
+

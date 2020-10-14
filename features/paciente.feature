@@ -14,3 +14,4 @@ Feature: Paciente
     When Eu acesso a pagina de cadastro de pacientes
     And Eu cadastro o paciente com o email 'edgar1@gmail.com',  password '123456', password confirmation '123456', nome 'Edgar Vinicius', cpf '10851498', altura '178' e data_nascimento '18/06/1999'
     Then Eu vejo uma mensagem de erro sobre o cpf invalido
+

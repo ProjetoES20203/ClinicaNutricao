@@ -33,6 +33,7 @@ Then ("Eu vejo o paciente de nome {string} e email {string}") do |nome, email|
   expect(page).to have_content(email)
 end
 
+
 Then ("Eu vejo uma mensagem de erro sobre o cpf invalido") do
   expect(page).to have_content("Cpf is too short (minimum is 11 characters)")
 end

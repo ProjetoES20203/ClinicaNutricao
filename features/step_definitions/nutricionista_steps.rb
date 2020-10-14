@@ -12,6 +12,7 @@ When ("Eu cadastro o nutricionista com o email {string},  password {string}, pas
   click_button "submit"
 end
 
+
 Then ("Eu vejo a mensagem {string}") do |mensagem|
   expect(page).to have_content(mensagem)
 end

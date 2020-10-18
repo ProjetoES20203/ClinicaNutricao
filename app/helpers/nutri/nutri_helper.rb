@@ -1,0 +1,2 @@
+module Nutri::NutriHelper
+end

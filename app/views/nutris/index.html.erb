@@ -1,0 +1,17 @@
+<h2>Pacientes</h2>
+<% if (!@pacientes.empty?) %>
+  <table border="1">
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+    </tr>
+    <% @pacientes.each do |paciente| %>
+      <tr>
+        <td align="center"><%= paciente.nome %></td>
+        <td align="center"><%= paciente.email %></td>
+      </tr>
+
+
+    <% end %>
+  </table>
+<% end %>

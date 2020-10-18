@@ -14,6 +14,7 @@
   <strong>Paciente:</strong>
   <%= @consult.paciente_id %>
 </p>
-
-<%= link_to 'Edit', edit_paciente_consult_path([@paciente, @consult]) %> |
-<%= link_to 'Back', paciente_consults_path(@paciente) %>
+<% if (nutri_signed_in?) %>
+  <%= link_to 'Editar', edit_paciente_consult_path([@paciente, @consult]) %> |
+<% end %>
+<%= link_to 'Voltar', paciente_consults_path(@paciente) %>

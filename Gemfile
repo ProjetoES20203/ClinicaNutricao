@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-
+gem 'travis'
 gem 'devise'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'

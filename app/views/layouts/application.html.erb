@@ -19,13 +19,17 @@
     <%= link_to 'Editar perfil', edit_nutri_registration_path, :class => 'navbar-link' %> |
     <%= link_to "Logout", destroy_nutri_session_path, method: :delete, :class => 'navbar-link'  %>
   <% elsif paciente_signed_in? %>
-    Logado como: <strong><%= current_paciente.email %></strong>.
+    Seja Bem Vindo Paciente <strong><%= current_paciente.nome %></strong>.
     <%= link_to 'Editar perfil', edit_paciente_registration_path, :class => 'navbar-link' %> |
+    <%= link_to 'Consultas', paciente_consults_path(current_paciente.id), :class => 'navbar-link' %> |
     <%= link_to "Logout", destroy_paciente_session_path, method: :delete, :class => 'navbar-link'  %>
   <% else %>
-    <%= link_to "Registrar-se", new_nutri_registration_path, :class => 'navbar-link'  %> |
+    <% if (!nutricionista_existe) %>
+      <%= link_to "Registrar-se", new_nutri_registration_path, :class => 'navbar-link'  %> |
+    <% end%>
     <%= link_to "Login de Paciente", new_paciente_session_path, :class => 'navbar-link'  %> |
     <%= link_to "Login de Nutricionista", new_nutri_session_path, :class => 'navbar-link' %>
+
   <% end %>
   <%= yield %>
 

@@ -4,11 +4,15 @@
     <tr>
       <th>Nome</th>
       <th>Email</th>
+      <th>cpf</th>
+      <th>Ações</th>
     </tr>
     <% @pacientes.each do |paciente| %>
       <tr>
         <td align="center"><%= paciente.nome %></td>
         <td align="center"><%= paciente.email %></td>
+        <td align="center"><%= paciente.cpf %></td>
+        <td align="center"><%= link_to 'Consultas', paciente_consults_path(paciente.id) %></td>
       </tr>
 
 

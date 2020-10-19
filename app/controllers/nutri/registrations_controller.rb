@@ -6,7 +6,12 @@ class Nutri::RegistrationsController < Devise::RegistrationsController
 
   #GET /resource/sign_up
   def new
-    super
+    if (!Nutri.all().empty?)
+      redirect_to root_path,
+                  :notice => "O Sistema já possui um nutricionista cadastrado!"
+    else
+      super
+    end
   end
 
   # POST /resource

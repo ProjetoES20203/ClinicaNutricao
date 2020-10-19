@@ -2,14 +2,13 @@
 
 <h1>Retornos</h1>
 
-<table>
+<table border="1">
   <thead>
   <tr>
     <th>Prontuario</th>
     <th>Data</th>
     <th>Estado</th>
-    <th>Consult</th>
-    <th colspan="3"></th>
+    <th>Retorno</th>
   </tr>
   </thead>
 
@@ -18,17 +17,22 @@
     <tr>
       <td><%= retorno.prontuario %></td>
       <td><%= retorno.data %></td>
-      <td><%= link_to 'Exibir', consult_retorno_path(@consult, retorno) %></td>
-      <% if (nutri_signed_in?) %>
-        <td><%= link_to 'Preencher Retorno', edit_consult_retorno_path(@consult, retorno) %></td>
-        <td><%= link_to 'Destruir', [@consult, retorno], method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <% if (retorno.estado) %>
+        <td>Retorno Preenchido</td>
+      <% else %>
+        <td>Retorno não Preenchido</td>
       <% end %>
-    </tr>
+      <td><%= link_to 'Exibir Retorno', consult_retorno_path(@consult, retorno) %>
+        <% if (nutri_signed_in?) %>
+          | <%= link_to 'Preencher Retorno', edit_consult_retorno_path(@consult, retorno) %> |
+          <%= link_to 'Destruir Retorno', [@consult, retorno], method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <% end %>
+        </tr>
   <% end %>
   </tbody>
 </table>
 
 <br>
-<% if (nutri_signed_in?) %>
-  <%= link_to 'New Retorno', new_retorno_path %>
-<% end %>
+
+<%= link_to 'New Retorno', new_consult_retorno_path(@consult) %>
+

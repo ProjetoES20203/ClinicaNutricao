@@ -12,8 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :prontuario %>
-    <%= form.text_area :prontuario %>
+    <% if (nutri_signed_in?) %>
+      <%= form.label :prontuario %>
+      <%= form.text_area :prontuario %>
+    <% end %>
   </div>
 
   <div class="field">
@@ -22,8 +24,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :estado %>
-    <%= form.check_box :estado %>
+    <% if (nutri_signed_in?) %>
+      <input type="hidden" value="1" name="retorno[estado]" id="retorno_estado"/>
+    <% else %>
+      <input type="hidden" value="0" name="retorno[estado]" id="retorno_estado"/>
+    <% end %>
   </div>
 
   <div class="actions">

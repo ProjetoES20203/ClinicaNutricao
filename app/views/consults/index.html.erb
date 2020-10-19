@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Consults</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Prontuario</th>
+    <th>Data</th>
+    <th>Paciente</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @consults.each do |consult| %>
+    <tr>
+      <td><%= consult.prontuario %></td>
+      <td><%= consult.data %></td>
+      <td><%= link_to 'Exibir', paciente_consult_path(@paciente, consult) %></td>
+      <% if (nutri_signed_in?) %>
+        <td><%= link_to 'Editar Consulta', edit_paciente_consult_path(@paciente, consult) %></td>
+        <td><%= link_to 'Destruir', [@paciente, consult], method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if (nutri_signed_in?) %>
+  <%= link_to 'Nova Consulta', new_paciente_consult_path(@paciente) %>
+<% end %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Prontuario:</strong>
+  <%= @consult.prontuario %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @consult.data %>
+</p>
+
+<p>
+  <strong>Paciente:</strong>
+  <%= @consult.paciente_id %>
+</p>
+<% if (nutri_signed_in?) %>
+  <%= link_to 'Editar', edit_paciente_consult_path([@paciente, @consult]) %> |
+<% end %>
+<%= link_to 'Voltar', paciente_consults_path(@paciente) %>

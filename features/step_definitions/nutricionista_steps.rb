@@ -23,7 +23,7 @@ end
 
 And ("Eu estou na pagina de login do nutricionista") do
   visit("nutris/sign_in")
-  expect(page).to have_current_path("/nutris/sign_in")
+
 end
 And ("Eu faço login com o email {string},  password {string}") do |email, password|
   fill_in "email", :with => email

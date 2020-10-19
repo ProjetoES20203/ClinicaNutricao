@@ -28,5 +28,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Consult', new_paciente_consult_path(@paciente) %>
+<% if (nutri_signed_in?) %>
+  <%= link_to 'Nova Consulta', new_paciente_consult_path(@paciente) %>
+<% end %>

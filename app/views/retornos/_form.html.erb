@@ -1,0 +1,32 @@
+<%= form_with(model: [@consult, retorno], local: true) do |form| %>
+  <% if retorno.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(retorno.errors.count, "error") %> prohibited this retorno from being saved:</h2>
+
+      <ul>
+        <% retorno.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :prontuario %>
+    <%= form.text_area :prontuario %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data %>
+    <%= form.datetime_select :data %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado %>
+    <%= form.check_box :estado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

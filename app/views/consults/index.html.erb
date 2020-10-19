@@ -17,7 +17,8 @@
     <tr>
       <td><%= consult.prontuario %></td>
       <td><%= consult.data %></td>
-      <td><%= link_to 'Exibir', paciente_consult_path(@paciente, consult) %></td>
+      <td><%= link_to 'Exibir Consulta', paciente_consult_path(@paciente, consult) %></td>
+      <td><%= link_to 'Retornos', consult_retornos_path(consult) %></td>
       <% if (nutri_signed_in?) %>
         <td><%= link_to 'Editar Consulta', edit_paciente_consult_path(@paciente, consult) %></td>
         <td><%= link_to 'Destruir', [@paciente, consult], method: :delete, data: {confirm: 'Are you sure?'} %></td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_183840) do
+ActiveRecord::Schema.define(version: 2020_10_19_174432) do
 
   create_table "consults", force: :cascade do |t|
     t.text "prontuario"
@@ -51,5 +51,16 @@ ActiveRecord::Schema.define(version: 2020_10_13_183840) do
     t.index ["reset_password_token"], name: "index_pacientes_on_reset_password_token", unique: true
   end
 
+  create_table "retornos", force: :cascade do |t|
+    t.text "prontuario"
+    t.datetime "data"
+    t.boolean "estado"
+    t.integer "consult_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["consult_id"], name: "index_retornos_on_consult_id"
+  end
+
   add_foreign_key "consults", "pacientes"
+  add_foreign_key "retornos", "consults"
 end

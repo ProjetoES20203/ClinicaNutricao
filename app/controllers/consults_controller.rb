@@ -1,17 +1,27 @@
 class ConsultsController < ApplicationController
   before_action :get_paciente
   before_action :set_consult, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_nutri!, except: [:index, :show]
 
 
   # GET /consults
   # GET /consults.json
   def index
-    @consults = @paciente.consults
+    if (nutri_signed_in? or paciente_signed_in?)
+      @consults = @paciente.consults
+    else
+      redirect_to root_path
+    end
+
   end
 
   # GET /consults/1
   # GET /consults/1.json
   def show
+    if ((!nutri_signed_in? and paciente_signed_in?) or (nutri_signed_in? and !paciente_signed_in?))
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /consults/new

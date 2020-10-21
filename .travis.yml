@@ -13,7 +13,7 @@ script:
   - bundle exec rake db:create:all
   - bundle exec rake db:migrate RAILS_ENV=test
   - bundle exec rails webpacker:compile
-  - Itest test/models - ruby -Itest
+  - rails test -b test/models
   - ruby -S bundle exec cucumber --profile default
 
 services:

@@ -12,7 +12,9 @@ install:
 script:
   - bundle exec rake db:create:all
   - bundle exec rake db:migrate RAILS_ENV=test
-  - cucumber
+  - bundle exec rails webpacker:compile
+  - Itest test/models/article_test.rb - ruby -Itest
+  - ruby -S bundle exec cucumber --profile default
 
 services:
   - postgresql

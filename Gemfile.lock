@@ -334,7 +334,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.3)
   rails_12factor
   rspec
-  rspec-rails
+  rspec-rails (>= 3.9.0)
   sass-rails (>= 6)
   selenium-webdriver
   sqlite3

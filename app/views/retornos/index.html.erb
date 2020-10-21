@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Retornos</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <% if (nutri_signed_in?) %>
+      <th>Prontuario</th>
+    <% end %>
+    <th>Data</th>
+    <th>Estado</th>
+    <th>Retorno</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @retornos.each do |retorno| %>
+    <tr>
+      <% if (nutri_signed_in?) %>
+        <td><%= retorno.prontuario %></td>
+      <% end %>
+      <td><%= retorno.data %></td>
+      <% if (retorno.estado) %>
+        <td>Realizado</td>
+      <% else %>
+        <td>Não Realizado</td>
+      <% end %>
+      <td><%= link_to 'Exibir Retorno', consult_retorno_path(@consult, retorno) %>
+        <% if (nutri_signed_in?) %>
+          | <%= link_to 'Preencher Retorno', edit_consult_retorno_path(@consult, retorno) %> |
+          <%= link_to 'Destruir Retorno', [@consult, retorno], method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <% end %>
+        </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if (paciente_signed_in?) %>
+<%= link_to 'Novo Retorno', new_consult_retorno_path(@consult) %>
+<%end %>

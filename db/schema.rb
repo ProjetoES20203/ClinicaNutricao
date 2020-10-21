@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_183840) do
+ActiveRecord::Schema.define(version: 2020_10_20_022621) do
 
   create_table "consults", force: :cascade do |t|
     t.text "prontuario"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 2020_10_13_183840) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["paciente_id"], name: "index_consults_on_paciente_id"
+  end
+
+  create_table "medidas", force: :cascade do |t|
+    t.float "circunfTorax"
+    t.float "circunfQuadril"
+    t.float "peso"
+    t.float "circunfCintura"
+    t.float "circunfPantur"
+    t.float "circunfCoxa"
+    t.float "circunfBraco"
+    t.float "circunfAbdomem"
+    t.integer "retorno_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["retorno_id"], name: "index_medidas_on_retorno_id"
   end
 
   create_table "nutris", force: :cascade do |t|
@@ -51,5 +66,17 @@ ActiveRecord::Schema.define(version: 2020_10_13_183840) do
     t.index ["reset_password_token"], name: "index_pacientes_on_reset_password_token", unique: true
   end
 
+  create_table "retornos", force: :cascade do |t|
+    t.text "prontuario"
+    t.datetime "data"
+    t.boolean "estado"
+    t.integer "consult_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["consult_id"], name: "index_retornos_on_consult_id"
+  end
+
   add_foreign_key "consults", "pacientes"
+  add_foreign_key "medidas", "retornos"
+  add_foreign_key "retornos", "consults"
 end

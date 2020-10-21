@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Prontuario:</strong>
+  <%= @retorno.prontuario %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @retorno.data %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <% if (@retorno.estado) %>
+  Realizado
+<% else %>
+  Não Realizado
+<% end %>
+
+</p>
+
+<p>
+  <strong>Consult:</strong>
+  <%= @retorno.consult_id %>
+</p>
+
+<%= link_to 'Edit', edit_consult_retorno_path([@consutl, @retorno]) %> |
+<%= link_to 'Back', consult_retornos_path(@consult) %>

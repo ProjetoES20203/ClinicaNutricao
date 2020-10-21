@@ -12,7 +12,7 @@
 
 <p>
   <strong>Paciente:</strong>
-  <%= @consult.paciente_id %>
+  <%= @paciente.nome%>
 </p>
 <% if (nutri_signed_in?) %>
   <%= link_to 'Editar', edit_paciente_consult_path([@paciente, @consult]) %> |

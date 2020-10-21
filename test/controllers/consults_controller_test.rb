@@ -1,5 +1,7 @@
 require 'test_helper'
 
+=begin
+
 class ConsultsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @consult = consults(:one)
@@ -46,3 +48,4 @@ class ConsultsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to consults_url
   end
 end
+=end

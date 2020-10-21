@@ -60,8 +60,8 @@ class Paciente::RegistrationsController < Devise::RegistrationsController
     return index_path
   end
 
-  def after_update_path_for(resource)
-    return index_path
+  def after_update_path_for(_resource)
+    return root_path
   end
 
   # The path used after sign up for inactive accounts.

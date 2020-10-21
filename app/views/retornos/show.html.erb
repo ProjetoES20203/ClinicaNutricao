@@ -12,7 +12,12 @@
 
 <p>
   <strong>Estado:</strong>
-  <%= @retorno.estado %>
+  <% if (@retorno.estado) %>
+  Realizado
+<% else %>
+  Não Realizado
+<% end %>
+
 </p>
 
 <p>

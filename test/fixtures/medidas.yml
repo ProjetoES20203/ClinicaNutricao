@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  circunfTorax: 1.5
+  circunfQuadril: 1.5
+  peso: 1.5
+  circunfCintura: 1.5
+  circunfPantur: 1.5
+  circunfCoxa: 1.5
+  circunfBraco: 1.5
+  circunfAbdomem: 1.5
+  retorno: one
+
+two:
+  circunfTorax: 1.5
+  circunfQuadril: 1.5
+  peso: 1.5
+  circunfCintura: 1.5
+  circunfPantur: 1.5
+  circunfCoxa: 1.5
+  circunfBraco: 1.5
+  circunfAbdomem: 1.5
+  retorno: two

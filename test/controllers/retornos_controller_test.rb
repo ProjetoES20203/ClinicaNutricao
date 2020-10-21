@@ -1,5 +1,7 @@
 require 'test_helper'
 
+=begin
+
 class RetornosControllerTest < ActionDispatch::IntegrationTest
   setup do
     @retorno = retornos(:one)
@@ -46,3 +48,5 @@ class RetornosControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to retornos_url
   end
 end
+
+=end

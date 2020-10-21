@@ -5,7 +5,9 @@
 <table border="1">
   <thead>
   <tr>
-    <th>Prontuario</th>
+    <% if (nutri_signed_in?) %>
+      <th>Prontuario</th>
+    <% end %>
     <th>Data</th>
     <th>Estado</th>
     <th>Retorno</th>
@@ -15,12 +17,14 @@
   <tbody>
   <% @retornos.each do |retorno| %>
     <tr>
-      <td><%= retorno.prontuario %></td>
+      <% if (nutri_signed_in?) %>
+        <td><%= retorno.prontuario %></td>
+      <% end %>
       <td><%= retorno.data %></td>
       <% if (retorno.estado) %>
-        <td>Retorno Preenchido</td>
+        <td>Realizado</td>
       <% else %>
-        <td>Retorno não Preenchido</td>
+        <td>Não Realizado</td>
       <% end %>
       <td><%= link_to 'Exibir Retorno', consult_retorno_path(@consult, retorno) %>
         <% if (nutri_signed_in?) %>
@@ -33,6 +37,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Retorno', new_consult_retorno_path(@consult) %>
-
+<% if (paciente_signed_in?) %>
+<%= link_to 'Novo Retorno', new_consult_retorno_path(@consult) %>
+<%end %>

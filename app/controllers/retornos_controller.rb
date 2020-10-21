@@ -1,6 +1,8 @@
 class RetornosController < ApplicationController
   before_action :get_consult
   before_action :set_retorno, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_nutri!, except: [:index, :show, :new, :create]
+  before_action :authenticate_paciente!, only: [:show, :create]
 
   # GET /retornos
   # GET /retornos.json
@@ -16,6 +18,7 @@ class RetornosController < ApplicationController
   # GET /retornos/new
   def new
     @retorno = @consult.retornos.build
+
   end
 
   # GET /retornos/1/edit
@@ -63,17 +66,18 @@ class RetornosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_retorno
-      @retorno = Retorno.find(params[:id])
-    end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_retorno
+    @retorno = Retorno.find(params[:id])
+  end
 
   def get_consult
     @consult = Consult.find(params[:consult_id])
   end
 
-    # Only allow a list of trusted parameters through.
-    def retorno_params
-      params.require(:retorno).permit(:prontuario, :data, :estado, :consult_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def retorno_params
+    params.require(:retorno).permit(:prontuario, :data, :estado, :consult_id)
+  end
 end

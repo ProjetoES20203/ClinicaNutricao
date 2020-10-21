@@ -69,7 +69,7 @@ class RetornosController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_retorno
-    @retorno = Retorno.find(params[:id])
+    @retorno = @consult.retornos.find(params[:id])
   end
 
   def get_consult

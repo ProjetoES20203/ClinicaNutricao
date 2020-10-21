@@ -54,7 +54,7 @@ class ConsultsController < ApplicationController
   def update
     respond_to do |format|
       if @consult.update(consult_params)
-        format.html { redirect_to paciente_consult_path(@paciente), notice: 'Consult was successfully updated.' }
+        format.html { redirect_to paciente_consult_path(@paciente), notice: 'A consulta foi atualizada.' }
         format.json { render :show, status: :ok, location: @consult }
       else
         format.html { render :edit }

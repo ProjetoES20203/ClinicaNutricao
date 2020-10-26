@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <% if (nutri_signed_in?) %>
       <%= form.label :prontuario %>
@@ -18,10 +17,70 @@
     <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :data %>
-    <%= form.datetime_select :data %>
-  </div>
+  <label for="retorno_data">Data</label>
+  <select class="retorno_data_3i" id="retorno_data_3i" name="retorno[data(3i)]">
+    <% @i = 1 %>
+    <% while @i <= Date.today.end_of_month.day do %>
+      <% if @i != Time.new.day %>
+        <option value="<%= @i %>"><%= @i %></option>
+      <% else %>
+        <option value="<%= Time.new.day %>" selected="selected"> <%= Time.new.day %></option>
+      <% end %>
+      <% @i += 1 %>
+    <% end %>
+  </select>
+  <select class="retorno_data_2i" id="retorno_data_2i" name="retorno[data(2i)]">
+    <% if Time.new.month <= 1 %>
+      <option value="1">Janeiro</option>
+    <% end %>
+    <% if Time.new.month <= 2 %>
+      <option value="2">Fevereiro</option>
+    <% end %>
+    <% if Time.new.month <= 3 %>
+      <option value="3">Março</option>
+    <% end %>
+    <% if Time.new.month <= 4 %>
+      <option value="4">Abril</option>
+    <% end %>
+    <% if Time.new.month <= 5 %>
+      <option value="5">Maio</option>
+    <% end %>
+    <% if Time.new.month <= 6 %>
+      <option value="6">Junho</option>
+    <% end %>
+    <% if Time.new.month <= 7 %>
+      <option value="7">Julho</option>
+    <% end %>
+    <% if Time.new.month <= 8 %>
+      <option value="8">Agosto</option>
+    <% end %>
+    <% if Time.new.month <= 9 %>
+      <option value="9">Setembro</option>
+    <% end %>
+    <% if Time.new.month <= 10 %>
+      <option value="10" selected="selected">Outubro</option>
+    <% end %>
+    <% if Time.new.month <= 11 %>
+      <option value="11">Novembro</option>
+    <% end %>
+    <% if Time.new.month <= 12 %>
+      <option value="12">Dezembro</option>
+    <% end %>
+  </select>
+  <select class="retorno_data_1i" id="retorno_data_1i" name="retorno[data(1i)]">
+    <option value="<%= Time.new.year %>" selected="selected">2020</option>
+  </select>
+  &mdash; <select id="retorno_data_4i" name="retorno[data(4i)]">
+  <% @horaValida = ['08', '09', '10', '11', '12', '14', '15', '16', '17'] %>
+  <% @horaValida.each do |hora| %>
+    <option value="<%= hora %>"><%= hora %></option>
+  <% end %>
+
+</select>
+  : <select id="retorno_data_5i" name="retorno[data(5i)]">
+  <option value="00">00</option>
+  <option value="30">30</option>
+</select>
 
   <div class="field">
     <% if (nutri_signed_in?) %>
@@ -30,8 +89,84 @@
       <input type="hidden" value="0" name="retorno[estado]" id="retorno_estado"/>
     <% end %>
   </div>
+  <% if (nutri_signed_in?) %>
+    <h3>Medidas</h3>
 
+    <div class="field">
+      <label for="medida_circunfTorax">Circunferencia do Torax</label>
+      <input type="number" value=0 name="medida[circunfTorax]" id="medida_circunfTorax"/>
+    </div>
+
+    <div class="field">
+      <label for="medida_circunfQuadril">Circunferencia do Quadril</label>
+      <input type="number" value=0 name="medida[circunfQuadril]" id="medida_circunfQuadril"/>
+    </div>
+
+    <div class="field">
+      <label for="medida_circunfCintura">Circunferencia da Cintura</label>
+      <input type="number" value=0 name="medida[circunfCintura]" id="medida_circunfCintura"/>
+    </div>
+
+    <div class="field">
+      <label for="medida_circunfPantur">Circunferencia da Panturrilha</label>
+      <input type="number" value=0 name="medida[circunfPantur]" id="medida_circunfPantur"/>
+    </div>
+
+    <div class="field">
+      <label for="medida_circunfCoxa">Circunferencia da Coxa</label>
+      <input type="number" value=0 name="medida[circunfCoxa]" id="medida_circunfCoxa"/>
+    </div>
+
+    <div class="field">
+      <label for="medida_circunfBraco">Circunferencia do Braço</label>
+      <input type="number" value=0 name="medida[circunfBraco]" id="medida_circunfBraco"/>
+    </div>
+
+    <div class="field">
+      <label for="medida_circunfAbdomem">Circunferencia do Abdomem</label>
+      <input type="number" value=0 name="medida[circunfAbdomem]" id="medida_circunfAbdomem"/>
+    </div>
+
+    <div class="field">
+      <label for="medida_peso">Peso</label>
+      <input type="number" value=0 name="medida[peso]" id="medida_peso"/>
+    </div>
+  <% else %>
+
+    <div class="field">
+      <input type="hidden" value=0 name="medida[circunfTorax]" id="medida_circunfTorax"/>
+    </div>
+
+    <div class="field">
+      <input type="hidden" value=0 name="medida[circunfQuadril]" id="medida_circunfQuadril"/>
+    </div>
+
+    <div class="field">
+      <input type="hidden" value=0 name="medida[circunfCintura]" id="medida_circunfCintura"/>
+    </div>
+
+    <div class="field">
+      <input type="hidden" value=0 name="medida[circunfPantur]" id="medida_circunfPantur"/>
+    </div>
+
+    <div class="field">
+      <input type="hidden" value=0 name="medida[circunfCoxa]" id="medida_circunfCoxa"/>
+    </div>
+
+    <div class="field">
+      <input type="hidden" value=0 name="medida[circunfBraco]" id="medida_circunfBraco"/>
+    </div>
+
+    <div class="field">
+      <input type="hidden" value=0 name="medida[circunfAbdomem]" id="medida_circunfAbdomem"/>
+    </div>
+
+    <div class="field">
+      <input type="hidden" value=0 name="medida[peso]" id="medida_peso"/>
+    </div>
+
+  <% end %>
   <div class="actions">
-    <%= form.submit id="submit"%>
+    <%= form.submit id = "submit" %>
   </div>
 <% end %>

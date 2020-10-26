@@ -1,8 +1,19 @@
 <p id="notice"><%= notice %></p>
+<style>
+    div {
+        border: 1px #2E2F30 solid;
+        width: 800px;
+        height: 250px;
+        word-wrap:break-word;
+    }
+</style>
 
 <p>
   <strong>Prontuario:</strong>
+  <br>
+<div>
   <%= @retorno.prontuario %>
+</div>
 </p>
 
 <p>
@@ -13,17 +24,40 @@
 <p>
   <strong>Estado:</strong>
   <% if (@retorno.estado) %>
-  Realizado
-<% else %>
-  Não Realizado
-<% end %>
+    Realizado
+  <% else %>
+    Não Realizado
+  <% end %>
 
 </p>
 
-<p>
-  <strong>Consult:</strong>
-  <%= @retorno.consult_id %>
-</p>
+<h2>Medidas</h2>
 
-<%= link_to 'Edit', edit_consult_retorno_path([@consutl, @retorno]) %> |
-<%= link_to 'Back', consult_retornos_path(@consult) %>
+<table border="10" cellspacing="0">
+  <tr>
+    <th>Peso</th>
+    <th>Torax</th>
+    <th>Quadril</th>
+    <th>Cintura</th>
+    <th>Panturrilha</th>
+    <th>Coxa</th>
+    <th>Braço</th>
+    <th>Abdomem</th>
+  </tr>
+
+  <tr>
+    <td align="center"><%= @retorno.medida.peso %></td>
+    <td align="center"><%= @retorno.medida.circunfTorax %></td>
+    <td align="center"><%= @retorno.medida.circunfQuadril %></td>
+    <td align="center"><%= @retorno.medida.circunfCintura %></td>
+    <td align="center"><%= @retorno.medida.circunfPantur %></td>
+    <td align="center"><%= @retorno.medida.circunfCoxa %></td>
+    <td align="center"><%= @retorno.medida.circunfBraco %></td>
+    <td align="center"><%= @retorno.medida.circunfAbdomem %></td>
+  </tr>
+</table>
+
+
+<br>
+<%= link_to 'Editar', edit_consult_retorno_path([@consult, @retorno]) %> |
+<%= link_to 'Voltar', consult_retornos_path(@consult) %>

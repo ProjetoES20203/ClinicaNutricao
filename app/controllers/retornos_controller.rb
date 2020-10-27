@@ -38,7 +38,7 @@ class RetornosController < ApplicationController
         format.html { redirect_to consult_retornos_path(@consult), notice: 'Retorno was successfully created.' }
         format.json { render :show, status: :created, location: @retorno }
       else
-        format.html { render :new, notice: 'Data Invalida, tente outra' }
+        format.html { render :new}
         format.json { render json: @retorno.errors, status: :unprocessable_entity }
       end
     end

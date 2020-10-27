@@ -40,7 +40,7 @@ class ConsultsController < ApplicationController
 
     respond_to do |format|
       if @consult.save
-        format.html { redirect_to paciente_consults_path(@paciente), notice: 'Consult was successfully created.' }
+        format.html { redirect_to paciente_consults_path(@paciente), notice: 'A Consulta foi  criada.' }
         format.json { render :show, status: :created, location: @consult }
       else
         format.html { render :new }

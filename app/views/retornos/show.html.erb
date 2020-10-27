@@ -4,15 +4,17 @@
         border: 1px #2E2F30 solid;
         width: 800px;
         height: 250px;
-        word-wrap:break-word;
+        word-wrap: break-word;
     }
 </style>
-
+<h1>Retornos</h1>
 <p>
   <strong>Prontuario:</strong>
   <br>
-<div>
+  <div>
+<p>
   <%= @retorno.prontuario %>
+</p>
 </div>
 </p>
 
@@ -20,16 +22,17 @@
   <strong>Data:</strong>
   <%= @retorno.data %>
 </p>
+<% if nutri_signed_in? %>
+  <p>
+    <strong>Estado:</strong>
+    <% if (@retorno.estado) %>
+      Realizado
+    <% else %>
+      Não Realizado
+    <% end %>
 
-<p>
-  <strong>Estado:</strong>
-  <% if (@retorno.estado) %>
-    Realizado
-  <% else %>
-    Não Realizado
-  <% end %>
-
-</p>
+  </p>
+<% end %>
 
 <h2>Medidas</h2>
 

@@ -48,6 +48,7 @@ class RetornosController < ApplicationController
   # PATCH/PUT /retornos/1.json
   def update
     @retorno.attributes = retorno_params
+    @retorno.medida.update(medida_params)
     respond_to do |format|
       if @retorno.save(:validate => false)
         format.html { redirect_to consult_retornos_path(@consult), notice: 'Retorno was successfully updated.' }

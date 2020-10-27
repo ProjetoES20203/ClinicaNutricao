@@ -1,8 +1,20 @@
 <p id="notice"><%= notice %></p>
-
+<style>
+    div {
+        border: 1px #2E2F30 solid;
+        width: 800px;
+        height: 250px;
+        word-wrap: break-word;
+    }
+</style>
+<h1>Consulta</h1>
 <p>
   <strong>Prontuario:</strong>
+  <div>
+<p>
   <%= @consult.prontuario %>
+</p>
+</div>
 </p>
 
 <p>
@@ -12,7 +24,7 @@
 
 <p>
   <strong>Paciente:</strong>
-  <%= @paciente.nome%>
+  <%= @paciente.nome %>
 </p>
 <% if (nutri_signed_in?) %>
   <%= link_to 'Editar', edit_paciente_consult_path([@paciente, @consult]) %> |

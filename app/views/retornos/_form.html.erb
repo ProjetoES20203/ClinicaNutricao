@@ -134,6 +134,10 @@
   <% else %>
 
     <div class="field">
+      <input type="hidden" value=0 name="medida[peso]" id="medida_peso"/>
+    </div>
+
+    <div class="field">
       <input type="hidden" value=0 name="medida[circunfTorax]" id="medida_circunfTorax"/>
     </div>
 
@@ -161,12 +165,8 @@
       <input type="hidden" value=0 name="medida[circunfAbdomem]" id="medida_circunfAbdomem"/>
     </div>
 
-    <div class="field">
-      <input type="hidden" value=0 name="medida[peso]" id="medida_peso"/>
-    </div>
-
   <% end %>
   <div class="actions">
-    <%= form.submit id = "submit" %>
+    <%= form.submit "Atualizar", id:"submit"%>
   </div>
 <% end %>

@@ -1,29 +1,24 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar Conta <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
   <%= render "pacientes/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br/>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, id: "email", autofocus: true, autocomplete: "email" %>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password, name="Senha" %>
     <% if @minimum_password_length %>
-      <br/>
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br/>
+    <%= f.password_field :password, id: "password", autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br/>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, name="Confirmar Senha" %><br/>
+    <%= f.password_field :password_confirmation, id: "password_confirmation", autocomplete: "new-password" %>
   </div>
 
   <div class="field">

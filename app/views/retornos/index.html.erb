@@ -1,44 +1,49 @@
 <p id="notice"><%= notice %></p>
 
 <style>
-    td{
-        word-wrap:break-word;
+    td {
+        word-wrap: break-word;
         text-align: center;
     }
 </style>
 <div align="center">
-<h1>Retornos</h1>
-
-<table id="example" border="1" class="display dataTable dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;table-layout:fixed">
-  <thead>
-  <tr>
-    <th>Data</th>
-    <th>Estado</th>
-    <th>Retorno</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @retornos.each do |retorno| %>
-    <tr>
-      <td><%= retorno.data %></td>
-      <% if (retorno.estado) %>
-        <td>Realizado</td>
-      <% else %>
-        <td>Não Realizado</td>
-      <% end %>
-      <td><%= link_to 'Exibir Retorno', consult_retorno_path(@consult, retorno) %>
-        <% if (nutri_signed_in?) %>
-          | <%= link_to 'Preencher Retorno', edit_consult_retorno_path(@consult, retorno) %> |
-          <%= link_to 'Destruir Retorno', [@consult, retorno], method: :delete, data: {confirm: 'Are you sure?'} %></td>
+  <h1>Retornos</h1>
+  <% if !@retornos[0].nil? %>
+    <table id="example" border="1" class="display dataTable dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;table-layout:fixed">
+      <thead>
+      <tr>
+        <th>Data</th>
+        <% if nutri_signed_in? %>
+          <th>Estado</th>
         <% end %>
-        </tr>
+        <th>Retorno</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @retornos.each do |retorno| %>
+        <tr>
+          <td><%= retorno.data %></td>
+          <% if nutri_signed_in? %>
+            <% if (retorno.estado) %>
+              <td>Realizado</td>
+            <% else %>
+              <td>Não Realizado</td>
+            <% end %>
+          <% end %>
+          <td><%= link_to 'Exibir Retorno', consult_retorno_path(@consult, retorno) %>
+            <% if (nutri_signed_in?) %>
+              | <%= link_to 'Preencher Retorno', edit_consult_retorno_path(@consult, retorno) %> |
+              <%= link_to 'Destruir Retorno', [@consult, retorno], method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            <% end %>
+            </tr>
+      <% end %>
+      </tbody>
+    </table>
   <% end %>
-  </tbody>
-</table>
 </div>
 
 <br>
 <% if (paciente_signed_in?) %>
-<%= link_to 'Novo Retorno', new_consult_retorno_path(@consult) %>
-<%end %>
+  <%= link_to 'Novo Retorno', new_consult_retorno_path(@consult) %>
+<% end %>

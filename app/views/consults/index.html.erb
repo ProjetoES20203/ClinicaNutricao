@@ -1,35 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Consults</h1>
-
-<table border="1">
-  <thead>
-  <tr>
-    <th>Prontuario</th>
-    <th>Data</th>
-    <th>Consulta</th>
-    <th>Retornos</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @consults.each do |consult| %>
+<style>
+    td{
+        word-wrap:break-word;
+        text-align: center;
+    }
+</style>
+<div align="center">
+<h1>Consultas</h1>
+<% if !@consults[0].nil? %>
+  <table id="example" border="1" class="display dataTable dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;table-layout:fixed">
+    <thead>
     <tr>
-      <td><%= consult.prontuario %></td>
-      <td><%= consult.data %></td>
-      <td><%= link_to 'Exibir Consulta', paciente_consult_path(@paciente, consult) %>
-        <% if (nutri_signed_in?) %>
-          | <%= link_to 'Editar Consulta', edit_paciente_consult_path(@paciente, consult) %> |
-          <%= link_to 'Destruir Consulta', [@paciente, consult], method: :delete, data: {confirm: 'Are you sure?'} %>
-        <% end %>
-      </td>
-      <td><%= link_to 'Retornos', consult_retornos_path(consult) %></td>
+      <th>Data</th>
+      <th>Consulta</th>
+      <th>Retornos</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-<% if (nutri_signed_in?) %>
-  <%= link_to 'Nova Consulta', new_paciente_consult_path(@paciente) %>
-<% end %>
+    <tbody>
+    <% @consults.each do |consult| %>
+      <tr>
+        <td><%= consult.data %></td>
+        <td><%= link_to 'Exibir Consulta', paciente_consult_path(@paciente, consult) %>
+          <% if (nutri_signed_in?) %>
+            | <%= link_to 'Editar Consulta', edit_paciente_consult_path(@paciente, consult) %> |
+            <%= link_to 'Destruir Consulta', [@paciente, consult], method: :delete, data: {confirm: 'Tem certeza?'} %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Retornos', consult_retornos_path(consult) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>
+
+  <br>
+  <% if (nutri_signed_in?) %>
+    <%= link_to 'Nova Consulta', new_paciente_consult_path(@paciente) %>
+  <% end %>

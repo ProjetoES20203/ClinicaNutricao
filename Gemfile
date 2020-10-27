@@ -5,6 +5,10 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
+#JQuery para o rails
+gem 'jquery-rails'
+#Validates for date
+gem 'validates_timeliness', '~> 5.0.0.beta1'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

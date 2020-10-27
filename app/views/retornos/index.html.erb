@@ -1,13 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<style>
+    td{
+        word-wrap:break-word;
+        text-align: center;
+    }
+</style>
+<div align="center">
 <h1>Retornos</h1>
 
-<table border="1">
+<table id="example" border="1" class="display dataTable dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;table-layout:fixed">
   <thead>
   <tr>
-    <% if (nutri_signed_in?) %>
-      <th>Prontuario</th>
-    <% end %>
     <th>Data</th>
     <th>Estado</th>
     <th>Retorno</th>
@@ -17,9 +21,6 @@
   <tbody>
   <% @retornos.each do |retorno| %>
     <tr>
-      <% if (nutri_signed_in?) %>
-        <td><%= retorno.prontuario %></td>
-      <% end %>
       <td><%= retorno.data %></td>
       <% if (retorno.estado) %>
         <td>Realizado</td>
@@ -35,6 +36,7 @@
   <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 <% if (paciente_signed_in?) %>

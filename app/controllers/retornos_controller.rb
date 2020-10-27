@@ -48,7 +48,6 @@ class RetornosController < ApplicationController
   # PATCH/PUT /retornos/1.json
   def update
     @retorno.attributes = retorno_params
-    @medida = Medida.create(medida_params)
     @retorno.medida.update(medida_params)
     respond_to do |format|
       if @retorno.save(:validate => false)
